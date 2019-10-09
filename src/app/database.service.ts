@@ -27,6 +27,10 @@ export class DatabaseService {
     let url = "/actors/" + id;
     return this.http.delete(url, httpOptions);
   }
+  checkActor(){
+    let url = "/actors/2movies";
+    return this.http.get(url);
+  }
 
   //MOVIES
   getMovies() {
@@ -48,4 +52,5 @@ export class DatabaseService {
     let url = "/movies/" + idMovie + "/" + idActor;
     return this.http.post(url, httpOptions)
   };
+  
 }

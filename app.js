@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost:27017/movies',{ useNewUrlParser: true, use
 
 //Actor RESTFul endpoionts 
 app.get('/actors', actors.getAll);
+app.get('/actors/2movies', actors.checkActor)
 app.post('/actors', actors.createOne);
 app.get('/actors/:id', actors.getOne);
 app.put('/actors/:id', actors.updateOne);

@@ -52,6 +52,11 @@ module.exports = {
                 if (err) return res.status(400).json(err);
                 if (!actor) return res.status(404).json();
                 movie.actors.push(actor._id);
+                actor.movies.push(movie._id)
+                actor.save(function (err) {
+                    if (err) return res.status(500).json(err);
+                    res.json();
+                });
                 movie.save(function (err) {
                     if (err) return res.status(500).json(err);
                     res.json();

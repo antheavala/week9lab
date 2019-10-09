@@ -66,5 +66,12 @@ module.exports = {
                 res.json();           
             })
         }); 
-    }       
+    },
+    checkActor: function(req,res){
+        Actor.find({movies: {$exists:true}, $where: "this.movies.length>=2"}, function(err,actor){
+            if (err) return res.status(400).json(err);
+            if (!actor) return res.status(404).json();
+            res.json(actor);
+        })
+    }    
 }

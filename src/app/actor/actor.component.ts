@@ -19,6 +19,8 @@ export class ActorComponent implements OnInit {
   movieYear : number = 0;
   deleteYear : number = 0;
 
+  filteredDB : any [] = [];
+
   selectedMovie: any;
   selectedActor: any;
 
@@ -108,6 +110,13 @@ export class ActorComponent implements OnInit {
 
   radioChangeHandlerAct(actor:any){
     this.selectedActor = actor;
+  }
+
+  actor2Movies(section){
+    this.dbService.checkActor().subscribe((data: any[]) => {
+      this.filteredDB = data;
+    });
+    this.section = section;
   }
 
 
